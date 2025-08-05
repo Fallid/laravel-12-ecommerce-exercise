@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_order', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('product_id')->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('order_id')->constrained('orders')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }
